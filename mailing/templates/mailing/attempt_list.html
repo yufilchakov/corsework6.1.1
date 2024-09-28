@@ -1,0 +1,25 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for attempt in attempt_list %}
+            <div class="col">
+                <div class="card shadow-sm-4">
+                    <div class="card-body">
+                        <p class="card-text">Дата последней попытки рассылки:
+                            {{attempt.date_last_attempt|date:"d-m-Y H:i"}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a class="btn btn-success" href="{% url 'mailing:attempt_detail' attempt.pk%}"
+                                   role="button">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
