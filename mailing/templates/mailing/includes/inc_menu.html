@@ -1,0 +1,6 @@
+{% include 'blog/includes/inc_menu.html' %}
+<a class="btn btn-primary" href="{% url 'mailing:client_create' %}" role="button">Создать клиента</a>
+<a class="btn btn-primary" href="{% url 'mailing:message_create' %}" role="button">Создать сообщение</a>
+<a class="btn btn-primary" href="{% url 'mailing:mailing_create' %}" role="button">Создать рассылку</a>
+<a class="btn btn-primary" href="{% url 'mailing:attempt_list' %}" role="button">Попытки рассылки</a>
+<a class="btn btn-primary" href="{% url 'blog:blog_list' %}" role="button">Блог</a>
