@@ -1,0 +1,26 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+            <div class="card shadow-sm-4">
+                <div class="card-body">
+                    <p class="card-text">Дата и время начала рассылки:{{mailing.start_date}}</p>
+                    <p class="card-text">Дата и время окончания рассылки:{{mailing.end_date}}</p>
+                    <p class="card-text">Дата и время следующей отправки рассылки:{{mailing.next_send_time}}</p>
+                    <p class="card-text">Периодичность рассылки письма: {{mailing.periodicity}}</p>
+                    <p class="card-text">Статус рассылки: {{mailing.status}}</p>
+                    <p class="card-text">Сообщение: {{mailing.message}}</p>
+                    <p class="card-text">Клиенты рассылки: {{ mailing.client.name }} ({{ mailing.client.email }})</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a class="btn btn-primary" href="{% url 'mailing:mailing_list' %}"
+                               role="button">Назад</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
