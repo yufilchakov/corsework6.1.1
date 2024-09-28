@@ -1,0 +1,26 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+  <h1>Главная страница</h1>
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Статистика рассылок</h2>
+      <ul>
+        <li>Количество рассылок всего: {{ mailing_count }}</li>
+        <li>Количество активных рассылок: {{ active_mailing_count }}</li>
+        <li>Количество уникальных клиентов для рассылок: {{ unique_clients_count }}</li>
+      </ul>
+    </div>
+    <div class="col-md-8">
+      <h2>Случайные статьи из блога</h2>
+      <ul>
+        {% for article in random_articles %}
+          <li>
+            <h3>{{ article.name }}</h3>
+            <p>{{ article.contents_article|truncatewords:50 }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}
