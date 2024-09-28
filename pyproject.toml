@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "corsework6-1-1"
+version = "0.1.0"
+description = ""
+authors = ["yura_filchakov <filchakov1993@gmail.com>"]
+readme = "README.md"
+packages = [{include = "corsework6"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "4.2.2"
+redis = "^5.0.8"
+python-dotenv = "^1.0.1"
+django-apscheduler = "^0.6.2"
+flake8 = "^7.1.1"
+psycopg2-binary = "^2.9.9"
+ipython = "^8.27.0"
+pillow = "^10.4.0"
+black = "^24.8.0"
+celery = "^5.4.0"
+pytz = "^2024.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
