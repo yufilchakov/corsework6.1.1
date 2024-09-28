@@ -1,0 +1,35 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+            <div class="card shadow-sm-4">
+                <div class="card-body">
+                    <p class="card-text">Дата последней попытки:{% if attempt.date_last_attempt %}
+                        {{attempt.date_last_attempt|date:"d-m-Y H:i"}}
+                        {% else %}
+                        Не обнаружена дата попытки!
+                        {% endif %}</p>
+                    <p class="card-text">Время последней попытки:{% if attempt.time_last_attempt %}
+                        {{attempt.time_last_attempt}}
+                        {% else %}
+                        Не обнаружена время попытки!
+                        {% endif %}</p>
+                    <p class="card-text">Ответ почтового сервера, если он был:{% if attempt.response %}
+                        {{attempt.response}}
+                        {% else %}
+                        Нет ответа почтового сервера.
+                        {% endif %}</p>
+                    <p class="card-text">Статус попытки: {{attempt.attempt_status}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a class="btn btn-primary" href="{% url 'mailing:attempt_list' %}"
+                               role="button">Назад</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
