@@ -66,8 +66,8 @@ class Mailing(models.Model):
     periodicity = models.CharField(max_length=10, choices=PERIODICITY_CHOICES,
                                    verbose_name='Периодичность рассылки письма')
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='create', verbose_name='Статус рассылки')
-    message = models.OneToOneField(Message, on_delete=models.CASCADE, verbose_name='Сообщение')
-    client = models.ManyToManyField(Client, verbose_name='Клиенты рассылки')
+    message = models.ForeignKey(Message, on_delete=models.CASCADE, verbose_name='Сообщение')
+    client = models.ForeignKey(Client, on_delete=models.CASCADE, verbose_name='Клиенты рассылки')
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name="Пользователь", blank=True, null=True)
     
     class Meta:
