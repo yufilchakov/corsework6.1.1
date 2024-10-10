@@ -1,0 +1,14 @@
+[
+    {
+        "model": "auth.group",
+        "fields": {
+            "name": "Модераторы"
+        }
+    },
+    {
+        "model": "auth.group",
+        "fields": {
+            "name": "Менеджеры"
+        }
+    }
+]
