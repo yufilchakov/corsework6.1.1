@@ -19,6 +19,7 @@ pillow = "^10.4.0"
 black = "^24.8.0"
 celery = "^5.4.0"
 pytz = "^2024.2"
+forex-python = "^1.8"
 
 
 [build-system]
