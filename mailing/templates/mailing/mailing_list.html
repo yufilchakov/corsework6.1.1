@@ -13,7 +13,7 @@
                             <div class="btn-group">
                                 <a class="btn btn-success" href="{% url 'mailing:mailing_detail' mailing.pk %}"
                                    role="button">Подробнее</a>
-                                {% if user.is_authenticated %}
+                                {% if user.is_authenticated == user.owner %}
                                 <a class="btn btn-warning" href="{% url 'mailing:mailing_update' mailing.pk %}"
                                    role="button">Редактировать</a>
                                 <a class="btn btn-danger" href="{% url 'mailing:mailing_delete' mailing.pk %}"
