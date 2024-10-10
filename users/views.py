@@ -7,8 +7,8 @@ from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy, reverse
+from django.views.generic import CreateView, UpdateView, DetailView
 from django.views import View
-from django.views.generic import CreateView
 
 from users.forms import UserRegisterForm
 from users.models import User
@@ -77,3 +77,23 @@ class PasswordResetView(View):
             except User.DoesNotExist:
                 form.add_error('email', 'Пользователь с таким email не найден')
         return render(request, self.template_name, {'form': form})
+
+
+class UserProfileDetailView(DetailView):
+    """ """
+    model = User
+    template_name = 'users/profile.html'
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+
+class UserProfileUpdateView(UpdateView):
+    """  """
+    model = User
+    fields = ['email', 'first_name', 'last_name', 'avatar', 'phone_number']
+    template_name = 'users/profile_form.html'
+    success_url = reverse_lazy('users:profile')
+
+    def get_object(self, queryset=None):
+        return self.request.user
