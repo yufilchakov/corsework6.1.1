@@ -4,7 +4,7 @@ from blog.models import Blog
 
 
 def get_blog_from_cache():
-    """Получает данные категорий из кэша, если кэш пуст, то поучает данные из базы данных."""
+    """Получает данные блога из кэша, если кэш пуст, то поучает данные из базы данных."""
     if not CACHE_ENABLED:
         return Blog.objects.all()
     key = 'blog_list'
