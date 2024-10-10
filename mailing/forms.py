@@ -16,22 +16,23 @@ class StyleFormMixin:
 class ClientForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Client
-        fields = ['id', 'email', 'last_name', 'first_name', 'patronymic', 'comment']
+        fields = '__all__'
 
 
 class MessageForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Message
-        fields = ['subject_of_the_letter', 'body_of_the_letter']
+        fields = '__all__'
        
 
 class MailingForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Mailing
-        fields = ['start_date', 'end_date', 'periodicity', 'status', 'message', 'client']
+        fields = '__all__'
         widgets = {
             'start_date': DateTimeInput(attrs={'type': 'datetime-local'}),
             'end_date': DateTimeInput(attrs={'type': 'datetime-local'}),
+            'next_send_time': DateTimeInput(attrs={'type': 'datetime-local'}),
         }
         message = ModelMultipleChoiceField(queryset=Message.objects.all(),
                                            widget=SelectMultiple(attrs={'class': 'form-control'}))
@@ -45,10 +46,17 @@ class MailingForm(StyleFormMixin, ModelForm):
             return client
 
 
-class ManagerMailingForm(StyleFormMixin, ModelForm):
-    """Класс форма для менеджера изменение рассылок"""
+class MailingManagerForm(StyleFormMixin, ModelForm):
+    """Класс форма для менеджера изменение рассылок."""
     
     class Meta:
         model = Mailing
         fields = ('client', 'message', 'periodicity', 'start_date', 'end_date')
-        
+
+
+class MailingModeratorForm(StyleFormMixin, ModelForm):
+    """Класс форма для модератора изменение рассылок."""
+    
+    class Meta:
+        model = Mailing
+        fields = ('client', 'message', 'periodicity', 'start_date', 'end_date')
