@@ -15,7 +15,7 @@ from mailing.task import get_index_from_cache
 def index(request):
     """ Обрабатывает запрос на главную страницу сайта. """
     mailing_count = Mailing.objects.count()
-    launched_mailing_count = Mailing.objects.filter(status='active').count()
+    launched_mailing_count = Mailing.objects.filter(status='launched').count()
     unique_clients_count = Mailing.objects.values('client').distinct().count()
     random_articles = Blog.objects.order_by('?')[:3]
     
