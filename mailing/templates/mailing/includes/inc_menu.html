@@ -1,6 +1,11 @@
 {% include 'blog/includes/inc_menu.html' %}
+{% if user.is_authenticated %}
 <a class="btn btn-primary" href="{% url 'mailing:client_create' %}" role="button">Создать клиента</a>
+<a class="btn btn-primary" href="{% url 'mailing:client_list' %}" role="button">Открыть клиента </a>
 <a class="btn btn-primary" href="{% url 'mailing:message_create' %}" role="button">Создать сообщение</a>
+<a class="btn btn-primary" href="{% url 'mailing:message_list' %}" role="button">Открыть сообщение</a>
 <a class="btn btn-primary" href="{% url 'mailing:mailing_create' %}" role="button">Создать рассылку</a>
+<a class="btn btn-primary" href="{% url 'mailing:mailing_list' %}" role="button">Открыть рассылку</a>
 <a class="btn btn-primary" href="{% url 'mailing:attempt_list' %}" role="button">Попытки рассылки</a>
 <a class="btn btn-primary" href="{% url 'blog:blog_list' %}" role="button">Блог</a>
+{% endif %}
